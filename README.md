@@ -51,9 +51,8 @@ $ npm run start:prod
 # unit tests
 $ docker-compose duild
 
-```bash
 # unit tests
 $ docker-compose up
-
+```
 
 
