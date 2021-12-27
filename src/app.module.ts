@@ -12,12 +12,13 @@ import { Post } from './posts/posts.model';
 import { FilesModule } from './files/files.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
+import { AppController } from './app.controller';
 
 console.log('================================');
 console.log(__dirname, path.resolve(__dirname, 'static'));
 
 @Module({
-  controllers: [],
+  controllers: [AppController],
   providers: [],
   imports: [
     ServeStaticModule.forRoot({

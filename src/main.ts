@@ -4,6 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from './pipes/validation.pipe';
 
 async function start() {
+  const HOST = 'localhost';
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule);
 
@@ -11,10 +12,12 @@ async function start() {
     .setTitle('Приложение магазин и посты')
     .setDescription('REST API документация')
     .setVersion('1.0.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
+  console.log(`Swagger: http://${HOST}:${PORT}/api/docs`);
 
   app.useGlobalPipes(new ValidationPipe());
 
